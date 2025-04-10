@@ -1,0 +1,32 @@
+import { AfterViewInit, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { LngLatLike, Marker, MarkerOptions } from 'mapbox-gl';
+import { MapService } from '../map/map.service';
+import * as i0 from "@angular/core";
+export declare class MarkerComponent implements OnChanges, OnDestroy, AfterViewInit, OnInit {
+    private mapService;
+    offset?: MarkerOptions['offset'];
+    anchor?: MarkerOptions['anchor'];
+    clickTolerance?: MarkerOptions['clickTolerance'];
+    feature?: GeoJSON.Feature<GeoJSON.Point>;
+    lngLat?: LngLatLike;
+    draggable?: MarkerOptions['draggable'];
+    popupShown?: boolean;
+    className: string;
+    pitchAlignment?: MarkerOptions['pitchAlignment'];
+    rotationAlignment?: MarkerOptions['rotationAlignment'];
+    markerDragStart: EventEmitter<Marker>;
+    markerDragEnd: EventEmitter<Marker>;
+    markerDrag: EventEmitter<Marker>;
+    content: ElementRef;
+    markerInstance?: Marker;
+    constructor(mapService: MapService);
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    togglePopup(): void;
+    updateCoordinates(coordinates: number[]): void;
+    private warnDeprecatedOutputs;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MarkerComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MarkerComponent, "mgl-marker", never, { "offset": { "alias": "offset"; "required": false; }; "anchor": { "alias": "anchor"; "required": false; }; "clickTolerance": { "alias": "clickTolerance"; "required": false; }; "feature": { "alias": "feature"; "required": false; }; "lngLat": { "alias": "lngLat"; "required": false; }; "draggable": { "alias": "draggable"; "required": false; }; "popupShown": { "alias": "popupShown"; "required": false; }; "className": { "alias": "className"; "required": false; }; "pitchAlignment": { "alias": "pitchAlignment"; "required": false; }; "rotationAlignment": { "alias": "rotationAlignment"; "required": false; }; }, { "markerDragStart": "markerDragStart"; "markerDragEnd": "markerDragEnd"; "markerDrag": "markerDrag"; }, never, ["*"], false, never>;
+}
