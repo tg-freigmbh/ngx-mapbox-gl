@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/showcase/src",
   "prefix": "ngx-mapbox-gl",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -86,6 +87,5 @@
         "jestConfig": "apps/showcase/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }
