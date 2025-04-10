@@ -241,7 +241,7 @@ export class MapService {
   }
 
   queryRenderedFeatures(
-    pointOrBox?: PointLike | [PointLike, PointLike],
+    pointOrBox: PointLike | [PointLike, PointLike],
     parameters?: { layers?: string[]; filter?: any[] }
   ): GeoJSON.Feature<GeoJSON.GeometryObject>[] {
     return this.mapInstance.queryRenderedFeatures(pointOrBox, parameters);
