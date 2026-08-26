@@ -34,11 +34,24 @@ export const MAPBOX_API_KEY = new InjectionToken('MapboxApiKey');
 export const MAPBOX_WORKER_URL = new InjectionToken<string | null>(
   'MapboxWorkerUrl',
 );
-export const MAPBOX_WORKER_CLASS = new InjectionToken<
-  (new () => Worker) | null
->('MapboxWorkerClass');
+export const MAPBOX_WORKER_FACTORY = new InjectionToken<
+  (() => Worker) | null
+>('MapboxWorkerFactory');
 
 let workerOverrideApplied = false;
+
+/**
+ * GL JS takes a constructor, not a factory. A constructor returning an unrelated
+ * object cannot be expressed in the type system, so the conversion is asserted here
+ * once instead of at every call site.
+ */
+function asWorkerClass(factory: () => Worker): new () => Worker {
+  return class {
+    constructor() {
+      return factory();
+    }
+  } as unknown as new () => Worker;
+}
 
 export interface SetupMap {
   accessToken?: string;
@@ -99,8 +112,8 @@ export class MapService {
   private readonly MAPBOX_WORKER_URL = inject<string | null>(MAPBOX_WORKER_URL, {
     optional: true,
   });
-  private readonly MAPBOX_WORKER_CLASS = inject<(new () => Worker) | null>(
-    MAPBOX_WORKER_CLASS,
+  private readonly MAPBOX_WORKER_FACTORY = inject<(() => Worker) | null>(
+    MAPBOX_WORKER_FACTORY,
     { optional: true },
   );
   private readonly injector = inject(Injector);
@@ -711,8 +724,8 @@ export class MapService {
       }
     });
     if (!workerOverrideApplied) {
-      if (this.MAPBOX_WORKER_CLASS) {
-        setWorkerClass(this.MAPBOX_WORKER_CLASS);
+      if (this.MAPBOX_WORKER_FACTORY) {
+        setWorkerClass(asWorkerClass(this.MAPBOX_WORKER_FACTORY));
         workerOverrideApplied = true;
       } else if (this.MAPBOX_WORKER_URL) {
         setWorkerUrl(this.MAPBOX_WORKER_URL);

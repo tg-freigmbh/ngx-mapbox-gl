@@ -1,13 +1,13 @@
 import {
   MAPBOX_API_KEY,
-  MAPBOX_WORKER_CLASS,
+  MAPBOX_WORKER_FACTORY,
   MAPBOX_WORKER_URL,
 } from './map/map.service';
 
 export function provideMapboxGL(config: {
   accessToken: string;
   workerUrl?: string;
-  workerClass?: new () => Worker;
+  workerFactory?: () => Worker;
 }) {
   return [
     {
@@ -19,8 +19,8 @@ export function provideMapboxGL(config: {
       useValue: config.workerUrl ?? null,
     },
     {
-      provide: MAPBOX_WORKER_CLASS,
-      useValue: config.workerClass ?? null,
+      provide: MAPBOX_WORKER_FACTORY,
+      useValue: config.workerFactory ?? null,
     },
   ];
 }
