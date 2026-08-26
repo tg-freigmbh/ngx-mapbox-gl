@@ -4,13 +4,13 @@ import type {
   MapContextEvent,
   MapDataEvent,
   MapEvent,
-  MapEvents,
   MapMouseEvent,
   MapSourceDataEvent,
   MapStyleDataEvent,
   MapTouchEvent,
   MapWheelEvent,
-} from 'mapbox-gl';
+} from 'mapbox-gl/esm';
+import type {MapEvents} from '../mapbox-esm-types';
 
 export interface NgxMapEvent {
   mapResize: EventEmitter<MapEvent>;
@@ -58,7 +58,7 @@ export interface NgxMapEvent {
   dataLoading: EventEmitter<MapDataEvent>;
   styleDataLoading: EventEmitter<MapStyleDataEvent>;
   sourceDataLoading: EventEmitter<MapSourceDataEvent>;
-  styleImageMissing: EventEmitter<{ id: string }>;
+  styleImageMissing: EventEmitter<MapEvents['styleimagemissing']>;
   idle: EventEmitter<void>;
 }
 

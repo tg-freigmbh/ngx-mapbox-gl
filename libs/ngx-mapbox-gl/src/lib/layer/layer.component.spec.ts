@@ -1,6 +1,6 @@
 import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { type BackgroundLayerSpecification } from 'mapbox-gl';
+import { type BackgroundLayerSpecification } from 'mapbox-gl/esm';
 import { of } from 'rxjs';
 import { MapService, SetupLayer } from '../map/map.service';
 import { mockMapbox } from '../map/mapbox.mock';

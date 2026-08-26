@@ -9,7 +9,7 @@ import {
   input,
   type InputSignal,
 } from '@angular/core';
-import type { VideoSource, VideoSourceSpecification } from 'mapbox-gl';
+import type { VideoSource, VideoSourceSpecification } from 'mapbox-gl/esm';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { MapService } from '../map/map.service';

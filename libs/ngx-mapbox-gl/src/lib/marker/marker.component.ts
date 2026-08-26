@@ -14,7 +14,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import type { LngLatLike, Marker, MarkerOptions } from 'mapbox-gl';
+import type { LngLatLike, Marker, MarkerOptions } from 'mapbox-gl/esm';
 import { MapService } from '../map/map.service';
 import type { Feature, Point } from 'geojson';
 

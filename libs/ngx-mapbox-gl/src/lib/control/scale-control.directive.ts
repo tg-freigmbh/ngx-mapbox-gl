@@ -6,7 +6,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { ScaleControl, type ScaleControlOptions } from 'mapbox-gl';
+import { ScaleControl, type ScaleControlOptions } from 'mapbox-gl/esm';
 import { MapService } from '../map/map.service';
 import { ControlComponent } from './control.component';
 

@@ -8,7 +8,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { IControl, type ControlPosition } from 'mapbox-gl';
+import { IControl, type ControlPosition } from 'mapbox-gl/esm';
 import { MapService } from '../map/map.service';
 
 export class CustomControl implements IControl {

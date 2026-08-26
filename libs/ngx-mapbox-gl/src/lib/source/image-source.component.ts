@@ -8,7 +8,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import type { ImageSource, ImageSourceSpecification } from 'mapbox-gl';
+import type { ImageSource, ImageSourceSpecification } from 'mapbox-gl/esm';
 import { Subscription } from 'rxjs';
 import { MapService } from '../map/map.service';
 import type { InputSignal } from '@angular/core';

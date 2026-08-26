@@ -5,7 +5,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { FullscreenControl } from 'mapbox-gl';
+import { FullscreenControl } from 'mapbox-gl/esm';
 import { MapService } from '../map/map.service';
 import { ControlComponent } from './control.component';
 

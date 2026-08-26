@@ -5,6 +5,6 @@ setupZoneTestEnv({
   errorOnUnknownProperties: true,
 });
 
-jest.mock('mapbox-gl', () => ({
+jest.mock('mapbox-gl/esm', () => ({
   Map: jest.fn(),
 }));

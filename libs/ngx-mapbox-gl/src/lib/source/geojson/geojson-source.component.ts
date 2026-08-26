@@ -11,7 +11,7 @@ import {
   model,
   type InputSignal,
 } from '@angular/core';
-import type { GeoJSONSource, GeoJSONSourceSpecification } from 'mapbox-gl';
+import type { GeoJSONSource, GeoJSONSourceSpecification } from 'mapbox-gl/esm';
 import { fromEvent, Subject, Subscription } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
 import { MapService } from '../../map/map.service';

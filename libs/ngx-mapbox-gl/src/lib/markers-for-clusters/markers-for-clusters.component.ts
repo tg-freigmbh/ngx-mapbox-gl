@@ -15,7 +15,7 @@ import type {
   MapSourceDataEvent,
   GeoJSONFeature,
   FilterSpecification,
-} from 'mapbox-gl';
+} from 'mapbox-gl/esm';
 import { fromEvent, merge, Subscription } from 'rxjs';
 import { filter, startWith, switchMap } from 'rxjs/operators';
 import { MapService } from '../map/map.service';

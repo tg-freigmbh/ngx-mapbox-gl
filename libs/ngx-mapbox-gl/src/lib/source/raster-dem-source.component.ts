@@ -8,7 +8,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import type { RasterDEMSourceSpecification } from 'mapbox-gl';
+import type { RasterDEMSourceSpecification } from 'mapbox-gl/esm';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { MapService } from '../map/map.service';

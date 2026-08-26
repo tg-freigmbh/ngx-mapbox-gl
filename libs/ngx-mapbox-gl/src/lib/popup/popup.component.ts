@@ -13,7 +13,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { LngLatLike, PointLike, Popup, PopupOptions } from 'mapbox-gl';
+import { LngLatLike, PointLike, Popup, PopupOptions } from 'mapbox-gl/esm';
 import { MapService } from '../map/map.service';
 import { MarkerComponent } from '../marker/marker.component';
 import { Feature, Point } from 'geojson';

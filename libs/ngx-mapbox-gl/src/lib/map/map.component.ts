@@ -21,7 +21,6 @@ import type {
   MapContextEvent,
   MapDataEvent,
   MapEvent,
-  MapEvents,
   MapMouseEvent,
   MapOptions,
   MapSourceDataEvent,
@@ -29,7 +28,8 @@ import type {
   MapTouchEvent,
   MapWheelEvent,
   PointLike,
-} from 'mapbox-gl';
+} from 'mapbox-gl/esm';
+import type {MapEvents} from '../mapbox-esm-types';
 
 @Component({
   selector: 'mgl-map',

@@ -90,7 +90,7 @@
     "@angular/router": "21.1.1",
     "@stackblitz/sdk": "1.11.0",
     "lodash-es": "4.17.21",
-    "mapbox-gl": "3.11.0",
+    "mapbox-gl": "3.29.0",
     "marked": "15.0.8",
     "ngx-markdown": "20.1.0",
     "prismjs": "1.30.0",

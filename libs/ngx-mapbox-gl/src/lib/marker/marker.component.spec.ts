@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { PointLike } from 'mapbox-gl';
+import { PointLike } from 'mapbox-gl/esm';
 import { of } from 'rxjs';
 import { MapService } from '../map/map.service';
 import { MarkerComponent } from './marker.component';

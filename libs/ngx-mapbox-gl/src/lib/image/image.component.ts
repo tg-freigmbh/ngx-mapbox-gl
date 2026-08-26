@@ -13,7 +13,7 @@ import {
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, startWith, switchMap } from 'rxjs/operators';
 import { MapService } from '../map/map.service';
-import type { Map } from 'mapbox-gl';
+import type { Map } from 'mapbox-gl/esm';
 
 @Component({
   selector: 'mgl-image',

@@ -1,5 +1,5 @@
 import { AfterContentInit, Directive, inject, input } from '@angular/core';
-import { AttributionControl } from 'mapbox-gl';
+import { AttributionControl } from 'mapbox-gl/esm';
 import { MapService } from '../map/map.service';
 import { ControlComponent } from './control.component';
 

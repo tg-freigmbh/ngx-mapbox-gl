@@ -10,13 +10,13 @@ import {
   input,
 } from '@angular/core';
 import type {
-  Layer,
   MapMouseEvent,
   MapTouchEvent,
   Map,
   SourceSpecification,
   LayerSpecification,
-} from 'mapbox-gl';
+} from 'mapbox-gl/esm';
+import type {Layer} from '../mapbox-esm-types';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, map, startWith, switchMap } from 'rxjs/operators';
 import { MapService, SetupLayer } from '../map/map.service';

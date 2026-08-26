@@ -12,7 +12,7 @@ import {
 import { fromEvent, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { MapService } from '../map/map.service';
-import type { CanvasSource } from 'mapbox-gl';
+import type { CanvasSource } from 'mapbox-gl/esm';
 
 type CanvasSourceSpecification = CanvasSource['options'];
 type CanvasSourceInputs = {

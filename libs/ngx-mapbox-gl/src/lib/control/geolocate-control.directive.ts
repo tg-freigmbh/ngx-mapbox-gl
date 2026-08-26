@@ -6,7 +6,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { GeolocateControl, type MapOptions } from 'mapbox-gl';
+import { GeolocateControl, type MapOptions } from 'mapbox-gl/esm';
 import { MapService } from '../map/map.service';
 import { ControlComponent } from './control.component';
 

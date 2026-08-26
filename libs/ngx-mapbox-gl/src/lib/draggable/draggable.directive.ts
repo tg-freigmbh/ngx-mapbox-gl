@@ -8,7 +8,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { MapMouseEvent } from 'mapbox-gl';
+import { MapMouseEvent } from 'mapbox-gl/esm';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { filter, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 import { LayerComponent } from '../layer/layer.component';

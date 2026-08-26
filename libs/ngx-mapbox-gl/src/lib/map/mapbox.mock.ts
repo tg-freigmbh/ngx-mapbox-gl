@@ -1,4 +1,4 @@
-import { Map } from 'mapbox-gl';
+import { Map } from 'mapbox-gl/esm';
 
 export function mockMapbox() {
   const MockedMap = jest.mocked(Map);

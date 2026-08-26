@@ -12,7 +12,7 @@ import type {
   MapTouchEvent,
   MapWheelEvent,
   StyleSpecification,
-} from 'mapbox-gl';
+} from 'mapbox-gl/esm';
 import { MapService } from './map.service';
 import { NgxMapEvent } from './map.types';
 import { mockMapbox } from './mapbox.mock';

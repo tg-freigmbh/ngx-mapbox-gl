@@ -16,16 +16,15 @@ import {
   type EasingOptions,
   type FilterSpecification,
   type LayerSpecification,
-  type LayoutSpecification,
   type LngLatLike,
   type MapOptions,
   type MarkerOptions,
-  type PaintSpecification,
   type PointLike,
   type PopupOptions,
   type Source,
   type SourceSpecification,
-} from 'mapbox-gl';
+} from 'mapbox-gl/esm';
+import type {LayoutSpecification, PaintSpecification} from '../mapbox-esm-types';
 import { AsyncSubject, Observable, Subscription } from 'rxjs';
 import { LayerEvents, NgxMapEvent } from './map.types';
 
