@@ -24,6 +24,7 @@ import {
   type Source,
   type SourceSpecification,
   setWorkerUrl,
+  setWorkerClass,
 } from 'mapbox-gl/esm';
 import type {LayoutSpecification, PaintSpecification} from '../mapbox-esm-types';
 import { AsyncSubject, Observable, Subscription } from 'rxjs';
@@ -33,8 +34,11 @@ export const MAPBOX_API_KEY = new InjectionToken('MapboxApiKey');
 export const MAPBOX_WORKER_URL = new InjectionToken<string | null>(
   'MapboxWorkerUrl',
 );
+export const MAPBOX_WORKER_CLASS = new InjectionToken<
+  (new () => Worker) | null
+>('MapboxWorkerClass');
 
-let workerUrlApplied = false;
+let workerOverrideApplied = false;
 
 export interface SetupMap {
   accessToken?: string;
@@ -95,6 +99,10 @@ export class MapService {
   private readonly MAPBOX_WORKER_URL = inject<string | null>(MAPBOX_WORKER_URL, {
     optional: true,
   });
+  private readonly MAPBOX_WORKER_CLASS = inject<(new () => Worker) | null>(
+    MAPBOX_WORKER_CLASS,
+    { optional: true },
+  );
   private readonly injector = inject(Injector);
 
   mapInstance: Map;
@@ -702,9 +710,14 @@ export class MapService {
         delete options[tkey];
       }
     });
-    if (!workerUrlApplied && this.MAPBOX_WORKER_URL) {
-      setWorkerUrl(this.MAPBOX_WORKER_URL);
-      workerUrlApplied = true;
+    if (!workerOverrideApplied) {
+      if (this.MAPBOX_WORKER_CLASS) {
+        setWorkerClass(this.MAPBOX_WORKER_CLASS);
+        workerOverrideApplied = true;
+      } else if (this.MAPBOX_WORKER_URL) {
+        setWorkerUrl(this.MAPBOX_WORKER_URL);
+        workerOverrideApplied = true;
+      }
     }
     this.mapInstance = new Map(options);
     afterEveryRender(

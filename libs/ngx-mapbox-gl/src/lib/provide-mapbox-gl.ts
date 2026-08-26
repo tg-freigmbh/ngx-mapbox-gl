@@ -1,8 +1,13 @@
-import { MAPBOX_API_KEY, MAPBOX_WORKER_URL } from './map/map.service';
+import {
+  MAPBOX_API_KEY,
+  MAPBOX_WORKER_CLASS,
+  MAPBOX_WORKER_URL,
+} from './map/map.service';
 
 export function provideMapboxGL(config: {
   accessToken: string;
   workerUrl?: string;
+  workerClass?: new () => Worker;
 }) {
   return [
     {
@@ -12,6 +17,10 @@ export function provideMapboxGL(config: {
     {
       provide: MAPBOX_WORKER_URL,
       useValue: config.workerUrl ?? null,
+    },
+    {
+      provide: MAPBOX_WORKER_CLASS,
+      useValue: config.workerClass ?? null,
     },
   ];
 }
