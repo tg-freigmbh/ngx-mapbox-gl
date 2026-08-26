@@ -23,12 +23,18 @@ import {
   type PopupOptions,
   type Source,
   type SourceSpecification,
+  setWorkerUrl,
 } from 'mapbox-gl/esm';
 import type {LayoutSpecification, PaintSpecification} from '../mapbox-esm-types';
 import { AsyncSubject, Observable, Subscription } from 'rxjs';
 import { LayerEvents, NgxMapEvent } from './map.types';
 
 export const MAPBOX_API_KEY = new InjectionToken('MapboxApiKey');
+export const MAPBOX_WORKER_URL = new InjectionToken<string | null>(
+  'MapboxWorkerUrl',
+);
+
+let workerUrlApplied = false;
 
 export interface SetupMap {
   accessToken?: string;
@@ -84,6 +90,9 @@ export type MovingOptions =
 export class MapService {
   private readonly zone = inject(NgZone);
   private readonly MAPBOX_API_KEY = inject<string | null>(MAPBOX_API_KEY, {
+    optional: true,
+  });
+  private readonly MAPBOX_WORKER_URL = inject<string | null>(MAPBOX_WORKER_URL, {
     optional: true,
   });
   private readonly injector = inject(Injector);
@@ -693,6 +702,10 @@ export class MapService {
         delete options[tkey];
       }
     });
+    if (!workerUrlApplied && this.MAPBOX_WORKER_URL) {
+      setWorkerUrl(this.MAPBOX_WORKER_URL);
+      workerUrlApplied = true;
+    }
     this.mapInstance = new Map(options);
     afterEveryRender(
       {
