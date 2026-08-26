@@ -24,7 +24,7 @@ import {
   type Source,
   type SourceSpecification,
   setWorkerUrl,
-  setWorkerClass,
+  setWorkerFactory,
 } from 'mapbox-gl/esm';
 import type {LayoutSpecification, PaintSpecification} from '../mapbox-esm-types';
 import { AsyncSubject, Observable, Subscription } from 'rxjs';
@@ -39,19 +39,6 @@ export const MAPBOX_WORKER_FACTORY = new InjectionToken<
 >('MapboxWorkerFactory');
 
 let workerOverrideApplied = false;
-
-/**
- * GL JS takes a constructor, not a factory. A constructor returning an unrelated
- * object cannot be expressed in the type system, so the conversion is asserted here
- * once instead of at every call site.
- */
-function asWorkerClass(factory: () => Worker): new () => Worker {
-  return class {
-    constructor() {
-      return factory();
-    }
-  } as unknown as new () => Worker;
-}
 
 export interface SetupMap {
   accessToken?: string;
@@ -725,7 +712,7 @@ export class MapService {
     });
     if (!workerOverrideApplied) {
       if (this.MAPBOX_WORKER_FACTORY) {
-        setWorkerClass(asWorkerClass(this.MAPBOX_WORKER_FACTORY));
+        setWorkerFactory(this.MAPBOX_WORKER_FACTORY);
         workerOverrideApplied = true;
       } else if (this.MAPBOX_WORKER_URL) {
         setWorkerUrl(this.MAPBOX_WORKER_URL);
